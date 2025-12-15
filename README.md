@@ -10,7 +10,7 @@ Niveau schmup de base. Incrémentation de difficulté après chaque tranche de 1
 
 ### Niveau 2 :
 But : Tuer un ennemi.\
-Niveau mini-boss. Incrémentation de difficulté après que la moitié de la vie de l'ennemi soit enlevée.\
+Niveau mini-boss. Incrémentation de difficulté après que la moitié de la vie de l'ennemi soit enlevée. \
 
 ### Niveau 3 :
 But : Survivre 1min.\
