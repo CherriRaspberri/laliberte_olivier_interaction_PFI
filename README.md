@@ -43,6 +43,9 @@ L'ennemi vise en tout temps le joueur. Quand le joueur est assez proche, l'ennem
 Phase 01 : 1 seconde de cooldown.\
 Phase 02 : 0.5 seconde de cooldown.
 
+### Mouvement 
+Le mouvement de l'ennemi est prédéfini et est en forme d'un 8 allongé horizontalement. L'ennemi va toujours bouger sur ce chemin, et ne va jamais se déplacer hos de celui-ci.
+
 ## UI
 UI simple qui affiche un traqueur de score.\
 Pour les niveaux avec un timer, un traqueur de temps est affiché.
