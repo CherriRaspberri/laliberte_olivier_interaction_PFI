@@ -1,5 +1,5 @@
 # laliberte_olivier_interaction_PFI
-Projet final pour le cours d'interaction ludique au collège Montmorency.
+Projet final pour le cours d'interaction ludique au collège Montmorency.\
 Lien vers le jeu ici.\
 Lien vers la page itch.io ici.
 
