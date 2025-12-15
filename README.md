@@ -1,7 +1,9 @@
 # laliberte_olivier_interaction_PFI
 Projet final pour le cours d'interaction ludique au collège Montmorency.
 ## CONCEPT 
-Jeu de shmup pseudo-infini en vue top-down. Dépendant du niveau, il faut soit atteindre un certain score, tuer un ennemi ou attendre la fin d'un timer.
+Jeu de shmup pseudo-infini en vue top-down. Dépendant du niveau, il faut soit atteindre un certain score, tuer un ennemi ou attendre la fin d'un timer.\
+Lien vers le jeu ici.\
+Lien vers la page itch.io ici.
 
 ## NIVEAUX
 ### Niveau 1 :
