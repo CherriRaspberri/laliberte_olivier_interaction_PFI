@@ -4,7 +4,7 @@ Lien vers le jeu [ici](https://cherriraspberri.github.io/laliberte_olivier_inter
 Lien vers la page itch.io [ici](https://cherriraspberri.itch.io/space-race).
 
 ## CONCEPT 
-Jeu de shmup pseudo-infini en vue top-down. Dépendant du niveau, il faut soit atteindre un certain score, tuer un ennemi ou attendre la fin d'un timer.\
+Jeu de shmup pseudo-infini en vue top-down. Dépendant du niveau, il faut soit atteindre un certain score, tuer un ennemi ou attendre la fin d'un timer.
 
 ## NIVEAUX
 ### Niveau 1 :
