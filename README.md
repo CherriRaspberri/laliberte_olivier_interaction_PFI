@@ -59,3 +59,7 @@ Au début de chaque niveau, une alerte indiquant dans quel niveau le joueur se r
 Chaque fois qu'une augmentation de la difficulté est effectuée, un message s'affiche pour l'indiquer au joueur.\
 Quand le joueur se fait heurter par une comète, un message "GAME OVER" s'affiche.\
 Quand le joueur complète un niveau ou le jeu, un message d'achèvement s'affiche.
+
+## Crédits 
+[Lien vers le kit d'assets visuels utilisé (Space Shooter Redux by Kenney)](https://www.kenney.nl/assets/space-shooter-redux)
+Olivier Laliberté - 2025
