@@ -1,0 +1,36 @@
+[gd_scene load_steps=6 format=3 uid="uid://daxadn4m4ifky"]
+
+[ext_resource type="Texture2D" uid="uid://xrbgislsyli" path="res://visual_assets/kenney_space-shooter-redux/PNG/Enemies/enemyBlack1.png" id="1_7p1mj"]
+[ext_resource type="Script" uid="uid://d1iqodb51bvuc" path="res://scripts/enemy_script.gd" id="1_md0e3"]
+[ext_resource type="AudioStream" uid="uid://cx4i5wu6s0e5g" path="res://visual_assets/sounds/enemy_laser_sound.mp3" id="3_4ra3w"]
+[ext_resource type="PackedScene" uid="uid://dukdbr5gemof6" path="res://scenes/health_bar.tscn" id="4_5uy6h"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_md0e3"]
+radius = 51.1566
+
+[node name="RigidBody2D" type="RigidBody2D"]
+gravity_scale = 0.0
+script = ExtResource("1_md0e3")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(1.25, 1.25)
+texture = ExtResource("1_7p1mj")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_md0e3")
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+target_position = Vector2(0, 400)
+
+[node name="reload_timer" type="Timer" parent="RayCast2D"]
+one_shot = true
+
+[node name="laser_sound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_4ra3w")
+volume_db = -5.0
+
+[node name="health_bar" parent="." instance=ExtResource("4_5uy6h")]
+offset_left = -26.0
+offset_top = -78.0
+offset_right = 26.0
+offset_bottom = -66.0

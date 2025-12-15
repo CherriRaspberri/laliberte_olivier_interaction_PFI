@@ -1,0 +1,36 @@
+[gd_scene load_steps=5 format=3 uid="uid://c018bg81i16fu"]
+
+[ext_resource type="Script" uid="uid://bx8eq7mawgo4" path="res://scripts/score_value_script.gd" id="1_v2s1q"]
+[ext_resource type="FontFile" uid="uid://bjsta0phwk7f5" path="res://visual_assets/fonts/8bit_wonder/8-BIT WONDER.TTF" id="2_rqtrn"]
+[ext_resource type="AudioStream" uid="uid://bcdto1fl5hn63" path="res://visual_assets/sounds/score_point.mp3" id="3_fu88h"]
+[ext_resource type="AudioStream" uid="uid://kp3htwdclrm6" path="res://visual_assets/sounds/score_point_small.mp3" id="4_fu88h"]
+
+[node name="score_value" type="Node2D"]
+z_index = 10
+script = ExtResource("1_v2s1q")
+
+[node name="Label" type="Label" parent="."]
+offset_left = -20.0
+offset_top = -12.0
+offset_right = 20.0
+offset_bottom = 11.0
+theme_override_colors/font_color = Color(0.952941, 0.756863, 0, 1)
+theme_override_colors/font_shadow_color = Color(0.582971, 0.0250367, 0.453484, 1)
+theme_override_fonts/font = ExtResource("2_rqtrn")
+text = "100"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true
+autostart = true
+
+[node name="score_sound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_fu88h")
+volume_db = -8.0
+
+[node name="score_sound_small" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_fu88h")
+volume_db = -8.0
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

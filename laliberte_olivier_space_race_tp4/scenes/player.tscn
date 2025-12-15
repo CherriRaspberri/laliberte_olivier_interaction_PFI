@@ -1,0 +1,74 @@
+[gd_scene load_steps=11 format=3 uid="uid://cwkjpvfobul02"]
+
+[ext_resource type="Texture2D" uid="uid://ba7as5kw270qf" path="res://visual_assets/kenney_space-shooter-redux/PNG/playerShip2_green.png" id="1_3vyb7"]
+[ext_resource type="Script" uid="uid://c3pyc01i81wln" path="res://scripts/player_script.gd" id="1_g2els"]
+[ext_resource type="PackedScene" uid="uid://c8xdlglcg3tfj" path="res://scenes/laser_weapon.tscn" id="3_qhqgy"]
+
+[sub_resource type="Gradient" id="Gradient_qhqgy"]
+offsets = PackedFloat32Array(0, 0.313131, 1)
+colors = PackedColorArray(0.87451, 0.317647, 0, 1, 0.809474, 0.423761, 0.246236, 1, 1, 0.827451, 0.113725, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_dqkch"]
+gradient = SubResource("Gradient_qhqgy")
+
+[sub_resource type="Curve" id="Curve_qhqgy"]
+_data = [Vector2(0.00446429, 1), 0.0, -0.0613863, 0, 0, Vector2(1, 0.0449438), -0.179776, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_dqkch"]
+curve = SubResource("Curve_qhqgy")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_qlg0r"]
+particle_flag_disable_z = true
+emission_shape = 4
+emission_point_count = 1
+angle_min = 270.0
+angle_max = 270.0
+direction = Vector3(0, 5, 0)
+spread = 30.0
+initial_velocity_min = 100.0
+initial_velocity_max = 150.0
+angular_velocity_min = -76.95
+angular_velocity_max = -1.60933e-05
+gravity = Vector3(0, 300, 0)
+scale_min = 8.63
+scale_max = 8.63
+scale_curve = SubResource("CurveTexture_dqkch")
+color = Color(0.756863, 0.815686, 0.992157, 0.996078)
+color_ramp = SubResource("GradientTexture1D_dqkch")
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_qhqgy"]
+radius = 44.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_dqkch"]
+radius = 44.0
+
+[node name="Player" type="CharacterBody2D"]
+scale = Vector2(0.6, 0.6)
+script = ExtResource("1_g2els")
+
+[node name="thruster_particles" type="GPUParticles2D" parent="."]
+position = Vector2(0, 35)
+scale = Vector2(0.52, 0.52)
+amount = 400
+lifetime = 0.2
+randomness = 0.2
+process_material = SubResource("ParticleProcessMaterial_qlg0r")
+
+[node name="Sprite" type="Sprite2D" parent="."]
+texture = ExtResource("1_3vyb7")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 12.5)
+shape = SubResource("CircleShape2D_qhqgy")
+
+[node name="laser_weapon" parent="." instance=ExtResource("3_qhqgy")]
+position = Vector2(0, -58)
+
+[node name="hitbox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="hitbox"]
+position = Vector2(0, 12.5)
+shape = SubResource("CircleShape2D_dqkch")
+
+[connection signal="body_entered" from="hitbox" to="." method="_on_hitbox_body_entered"]

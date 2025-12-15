@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://gx333xv4oysm"]
+
+[ext_resource type="AudioStream" uid="uid://bi4uf8ggppivk" path="res://visual_assets/sounds/explosion_small.mp3" id="1_e3m0p"]
+[ext_resource type="Script" uid="uid://cs0wyr657xiy" path="res://scripts/comet_small_sound_script.gd" id="1_y586m"]
+
+[node name="comet_small_sound" type="AudioStreamPlayer2D"]
+stream = ExtResource("1_e3m0p")
+volume_db = -10.0
+script = ExtResource("1_y586m")

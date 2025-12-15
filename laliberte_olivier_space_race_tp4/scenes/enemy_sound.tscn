@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://dt4bl5olt1eow"]
+
+[ext_resource type="AudioStream" uid="uid://587hjgeknnw7" path="res://visual_assets/sounds/player_explosion.mp3" id="1_qqnhy"]
+[ext_resource type="Script" uid="uid://xhbks51mrhtr" path="res://scripts/enemy_sound_script.gd" id="2_qqnhy"]
+
+[node name="enemy_sound" type="AudioStreamPlayer2D"]
+stream = ExtResource("1_qqnhy")
+volume_db = -5.0
+script = ExtResource("2_qqnhy")

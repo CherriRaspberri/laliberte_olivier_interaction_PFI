@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://dho4yvkd0lhug"]
+
+[ext_resource type="Script" uid="uid://db55cceevxgep" path="res://laser_enemy.gd" id="1_luky8"]
+[ext_resource type="Texture2D" uid="uid://cbp3ejstg2p50" path="res://visual_assets/kenney_space-shooter-redux/PNG/Lasers/laserRed01.png" id="2_taq3k"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_luky8"]
+size = Vector2(10, 54)
+
+[node name="Area2D" type="Area2D"]
+collision_layer = 4
+script = ExtResource("1_luky8")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+rotation = 3.14159
+texture = ExtResource("2_taq3k")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_luky8")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+
+[connection signal="body_shape_entered" from="." to="." method="_on_body_shape_entered"]
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

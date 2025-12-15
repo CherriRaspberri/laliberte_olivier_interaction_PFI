@@ -1,0 +1,30 @@
+[gd_scene load_steps=5 format=3 uid="uid://bwmacxuveckv1"]
+
+[ext_resource type="Texture2D" uid="uid://70txvtk006a2" path="res://visual_assets/background.png" id="1_lnu2h"]
+[ext_resource type="PackedScene" uid="uid://c71gjn10jvn65" path="res://scenes/comet_spawner.tscn" id="2_lnu2h"]
+[ext_resource type="PackedScene" uid="uid://cwkjpvfobul02" path="res://scenes/player.tscn" id="2_yqjtg"]
+[ext_resource type="PackedScene" uid="uid://jqshj3la6xei" path="res://scenes/screen_shake.tscn" id="4_lbhrr"]
+
+[node name="Game" type="Node2D"]
+
+[node name="Background" type="Sprite2D" parent="."]
+texture = ExtResource("1_lnu2h")
+centered = false
+offset = Vector2(-25, -15)
+region_rect = Rect2(0, 0, 1300, 740)
+
+[node name="Player" parent="." instance=ExtResource("2_yqjtg")]
+position = Vector2(615, 673)
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+position = Vector2(0, -200)
+zoom = Vector2(1.35, 1.35)
+limit_left = 0
+limit_top = 0
+limit_right = 1280
+limit_bottom = 720
+position_smoothing_enabled = true
+
+[node name="Comet_spawner" parent="." instance=ExtResource("2_lnu2h")]
+
+[node name="Screen_shake" parent="." instance=ExtResource("4_lbhrr")]

@@ -1,0 +1,23 @@
+[gd_scene load_steps=5 format=3 uid="uid://csp750gxssdwu"]
+
+[ext_resource type="Texture2D" uid="uid://cnri3d5tjdn7h" path="res://visual_assets/groundRock.png" id="1_bl1la"]
+[ext_resource type="Shader" uid="uid://cgaperamx07sj" path="res://visual_assets/scrolling_game_wall_left.gdshader" id="1_paicw"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_gf23x"]
+shader = ExtResource("1_paicw")
+shader_parameter/direction = Vector2(1, 0)
+shader_parameter/speed_scale = 0.3
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bl1la"]
+size = Vector2(22, 808)
+
+[node name="game_wall_left" type="StaticBody2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_gf23x")
+rotation = 1.5708
+texture = ExtResource("1_bl1la")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-24, 0)
+shape = SubResource("RectangleShape2D_bl1la")

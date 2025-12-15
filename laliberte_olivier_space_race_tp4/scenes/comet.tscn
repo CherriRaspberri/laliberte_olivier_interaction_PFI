@@ -1,0 +1,21 @@
+[gd_scene load_steps=5 format=3 uid="uid://kjt7sei0npt"]
+
+[ext_resource type="Texture2D" uid="uid://baas4i4vrhw27" path="res://visual_assets/kenney_space-shooter-redux/PNG/Meteors/meteorGrey_big1.png" id="1_2rx51"]
+[ext_resource type="Script" uid="uid://cya4ps2j65bsa" path="res://scripts/comet_script.gd" id="1_e3cmu"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_e3cmu"]
+bounce = 8.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_yqjtg"]
+radius = 45.0
+
+[node name="Comet" type="RigidBody2D" groups=["comets"]]
+physics_material_override = SubResource("PhysicsMaterial_e3cmu")
+linear_damp = 5.0
+script = ExtResource("1_e3cmu")
+
+[node name="Sprite" type="Sprite2D" parent="."]
+texture = ExtResource("1_2rx51")
+
+[node name="Collision_shape" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_yqjtg")

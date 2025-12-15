@@ -1,0 +1,170 @@
+[gd_scene load_steps=20 format=3 uid="uid://dwnjyww64tmo1"]
+
+[ext_resource type="Script" uid="uid://2oqla3xoti0v" path="res://scripts/game_script.gd" id="1_xau5h"]
+[ext_resource type="PackedScene" uid="uid://c5ilww7qcywl6" path="res://scenes/background.tscn" id="2_4aj43"]
+[ext_resource type="Texture2D" uid="uid://bt7ydo3xya2g7" path="res://visual_assets/bg_03.jpg" id="3_2d3fo"]
+[ext_resource type="PackedScene" uid="uid://csp750gxssdwu" path="res://scenes/game_wall_left.tscn" id="3_jprfi"]
+[ext_resource type="PackedScene" uid="uid://c3gxfi3hvujbv" path="res://scenes/game_wall_right.tscn" id="4_xtn3o"]
+[ext_resource type="PackedScene" uid="uid://cwkjpvfobul02" path="res://scenes/player.tscn" id="5_33vwl"]
+[ext_resource type="PackedScene" uid="uid://c71gjn10jvn65" path="res://scenes/comet_spawner.tscn" id="6_h3un3"]
+[ext_resource type="AudioStream" uid="uid://ck61oa6p1e62c" path="res://visual_assets/sounds/space_theme_lvl_03.mp3" id="7_jprfi"]
+[ext_resource type="PackedScene" uid="uid://x28dwmc5ukym" path="res://scenes/camera_2d.tscn" id="7_jsetr"]
+[ext_resource type="AudioStream" uid="uid://cyjcsn8qfuy81" path="res://visual_assets/sounds/game_over.ogg" id="8_xtn3o"]
+[ext_resource type="AudioStream" uid="uid://crrd7n8cg3k5k" path="res://visual_assets/sounds/difficulty_ramp_up.mp3" id="9_33vwl"]
+[ext_resource type="AudioStream" uid="uid://5hdwtxlvictd" path="res://visual_assets/sounds/level_complete.mp3" id="10_h3un3"]
+[ext_resource type="AudioStream" uid="uid://du3wujhmc6gra" path="res://visual_assets/sounds/game_complete.mp3" id="10_qby2b"]
+[ext_resource type="AudioStream" uid="uid://dcj7ogyxqcfql" path="res://visual_assets/sounds/level_start.mp3" id="11_jsetr"]
+[ext_resource type="FontFile" uid="uid://bjsta0phwk7f5" path="res://visual_assets/fonts/8bit_wonder/8-BIT WONDER.TTF" id="12_d6upy"]
+[ext_resource type="Script" uid="uid://bpsbn0p6dmagd" path="res://scripts/score_script.gd" id="12_vue8a"]
+[ext_resource type="Script" uid="uid://fhqaysrsk2we" path="res://scripts/message_label_script.gd" id="13_d6upy"]
+[ext_resource type="PackedScene" uid="uid://chkk7n4304unv" path="res://scenes/pause_menu.tscn" id="14_qby2b"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_d6upy"]
+content_margin_top = 154.0
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[node name="Game" type="Node2D"]
+script = ExtResource("1_xau5h")
+camera_path = NodePath("Camera2D")
+level_name = "Level 3"
+level_nb = 3
+metadata/_edit_horizontal_guides_ = [-40.0]
+
+[node name="Background" parent="." instance=ExtResource("2_4aj43")]
+texture = ExtResource("3_2d3fo")
+
+[node name="game_wall_left" parent="." groups=["walls"] instance=ExtResource("3_jprfi")]
+position = Vector2(27, 364)
+
+[node name="game_wall_right" parent="." groups=["walls"] instance=ExtResource("4_xtn3o")]
+position = Vector2(1251, 364)
+
+[node name="Player" parent="." instance=ExtResource("5_33vwl")]
+position = Vector2(640, 655)
+
+[node name="Comet_spawner" parent="." instance=ExtResource("6_h3un3")]
+
+[node name="music" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("7_jprfi")
+volume_db = -15.0
+autoplay = true
+
+[node name="death_sound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("8_xtn3o")
+volume_db = -5.0
+
+[node name="difficulty_sound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("9_33vwl")
+volume_db = -5.0
+
+[node name="game_complete_sound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("10_qby2b")
+volume_db = -3.0
+
+[node name="level_complete_sound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("10_h3un3")
+
+[node name="level_start_sound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("11_jsetr")
+
+[node name="game_over_label" type="Label" parent="."]
+visible = false
+z_index = 5
+offset_left = 190.0
+offset_top = 190.0
+offset_right = 1090.0
+offset_bottom = 290.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("12_d6upy")
+theme_override_font_sizes/font_size = 100
+text = "GAME OVER"
+
+[node name="restart_label" type="Label" parent="game_over_label"]
+visible = false
+layout_mode = 0
+offset_left = 140.0
+offset_top = 115.0
+offset_right = 755.0
+offset_bottom = 145.0
+theme_override_fonts/font = ExtResource("12_d6upy")
+theme_override_font_sizes/font_size = 30
+text = "Press space to restart"
+
+[node name="game_over_timer" type="Timer" parent="."]
+wait_time = 1.5
+one_shot = true
+
+[node name="survival_timer" type="Timer" parent="."]
+wait_time = 60.0
+one_shot = true
+
+[node name="difficulty_timer" type="Timer" parent="."]
+wait_time = 15.0
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="GUI" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/GUI"]
+layout_mode = 0
+offset_right = 1280.0
+offset_bottom = 60.0
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 10
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/GUI/MarginContainer"]
+layout_direction = 3
+layout_mode = 2
+
+[node name="score" type="Label" parent="CanvasLayer/GUI/MarginContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.952941, 0.756863, 0, 1)
+theme_override_colors/font_shadow_color = Color(0.584314, 0.0235294, 0.454902, 1)
+theme_override_fonts/font = ExtResource("12_d6upy")
+theme_override_font_sizes/font_size = 25
+text = "0"
+script = ExtResource("12_vue8a")
+
+[node name="message_label" type="Label" parent="CanvasLayer/GUI"]
+layout_mode = 1
+offset_right = 1280.0
+offset_bottom = 720.0
+theme_override_colors/font_color = Color(0.952941, 0.756863, 0, 1)
+theme_override_colors/font_shadow_color = Color(0.584314, 0.0235294, 0.454902, 1)
+theme_override_fonts/font = ExtResource("12_d6upy")
+theme_override_font_sizes/font_size = 25
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("13_d6upy")
+
+[node name="timer_label" type="Label" parent="CanvasLayer/GUI"]
+layout_mode = 0
+offset_right = 1280.0
+offset_bottom = 720.0
+theme_override_colors/font_color = Color(0.952941, 0.756863, 0, 1)
+theme_override_colors/font_shadow_color = Color(0.584314, 0.0235294, 0.454902, 1)
+theme_override_fonts/font = ExtResource("12_d6upy")
+theme_override_font_sizes/font_size = 30
+theme_override_styles/normal = SubResource("StyleBoxFlat_d6upy")
+text = "60"
+horizontal_alignment = 1
+
+[node name="pause_menu" parent="CanvasLayer" instance=ExtResource("14_qby2b")]
+visible = false
+
+[node name="Camera2D" parent="." instance=ExtResource("7_jsetr")]
+zoom = Vector2(1, 1)
+limit_top = 0
+limit_bottom = 720
+player_path = NodePath("../Player")
+
+[connection signal="player_died" from="Player" to="." method="_on_player_player_died"]
+[connection signal="timeout" from="game_over_timer" to="." method="_on_game_over_timer_timeout"]
+[connection signal="timeout" from="survival_timer" to="." method="_on_survival_timer_timeout"]
+[connection signal="timeout" from="difficulty_timer" to="." method="_on_difficulty_timer_timeout"]

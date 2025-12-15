@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://dukdbr5gemof6"]
+
+[ext_resource type="Script" uid="uid://dw50a7gfotxet" path="res://scripts/health_bar_script.gd" id="1_1bvlm"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_iwqyq"]
+bg_color = Color(0.936401, 0.403889, 0.422966, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1bvlm"]
+bg_color = Color(0.380392, 0.713726, 0.290196, 1)
+
+[node name="health_bar" type="ProgressBar"]
+offset_left = -59.0
+offset_right = 59.0
+offset_bottom = 27.0
+theme_override_styles/background = SubResource("StyleBoxFlat_iwqyq")
+theme_override_styles/fill = SubResource("StyleBoxFlat_1bvlm")
+max_value = 30.0
+show_percentage = false
+script = ExtResource("1_1bvlm")

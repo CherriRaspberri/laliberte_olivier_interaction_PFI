@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://brqpbmtpffqxy"]
+
+[ext_resource type="Script" uid="uid://d36wkdf7cvx0m" path="res://scripts/comet_small_script.gd" id="1_5no1i"]
+[ext_resource type="Texture2D" uid="uid://cvmft10yso33e" path="res://visual_assets/kenney_space-shooter-redux/PNG/Meteors/meteorGrey_small1.png" id="2_5no1i"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_yqjtg"]
+radius = 13.0
+
+[node name="Comet_small" type="RigidBody2D" groups=["comets"]]
+linear_damp = 5.0
+script = ExtResource("1_5no1i")
+
+[node name="sprite" type="Sprite2D" parent="."]
+texture = ExtResource("2_5no1i")
+
+[node name="collision_shape" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_yqjtg")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

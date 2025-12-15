@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://ckgirndrvo3p3"]
+
+[ext_resource type="AudioStream" uid="uid://cldifs1hixra7" path="res://visual_assets/sounds/laser_sound.mp3" id="1_ua743"]
+[ext_resource type="Script" uid="uid://b81bxhseqdix5" path="res://scripts/laser_sound_script.gd" id="2_c30d7"]
+
+[node name="laser_sound" type="AudioStreamPlayer2D"]
+stream = ExtResource("1_ua743")
+script = ExtResource("2_c30d7")
