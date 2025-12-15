@@ -48,6 +48,7 @@ Le mouvement de l'ennemi est prédéfini et est en forme d'un 8 allongé horizon
 
 ## UI
 UI simple qui affiche un traqueur de score.\
+Pour les niveaux avec un ennemi, un traqueur de vie est affiché au dessus de l'ennemi.\
 Pour les niveaux avec un timer, un traqueur de temps est affiché.
 
 ### Avertissements :
